@@ -4,6 +4,8 @@ use PoP\Hooks\Facades\HooksAPIFacade;
 
 class Hooks
 {
+    const AUTHOR_RESTFIELDS = 'author.id|name|url';
+
     public function __construct() {
         HooksAPIFacade::getInstance()->addFilter(
             'Posts:RESTFields',
@@ -13,6 +15,6 @@ class Hooks
 
     public function getRESTFields($restFields)
     {
-        return $restFields.',author.id|name|url';
+        return $restFields.','.self::AUTHOR_RESTFIELDS;
     }
 }
