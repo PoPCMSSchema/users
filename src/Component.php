@@ -2,6 +2,7 @@
 namespace PoP\Users;
 
 use PoP\Root\Component\AbstractComponent;
+use PoP\Root\Component\YAMLServicesTrait;
 use PoP\Root\Container\ContainerBuilderUtils;
 
 /**
@@ -9,6 +10,17 @@ use PoP\Root\Container\ContainerBuilderUtils;
  */
 class Component extends AbstractComponent
 {
+    use YAMLServicesTrait;
+
+    /**
+     * Initialize services
+     */
+    public static function init()
+    {
+        parent::init();
+        self::initYAMLServices(dirname(__DIR__));
+    }
+
     /**
      * Boot component
      *
