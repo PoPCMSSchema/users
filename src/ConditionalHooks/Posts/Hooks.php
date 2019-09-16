@@ -13,7 +13,7 @@ class Hooks
         );
     }
 
-    public function getRESTFields($restFields)
+    public function getRESTFields($restFields): string
     {
         return $restFields.','.self::AUTHOR_RESTFIELDS;
     }
