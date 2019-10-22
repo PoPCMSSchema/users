@@ -1,13 +1,15 @@
 <?php
 namespace PoP\Users\ConditionalHooks\Posts;
-use PoP\Hooks\Facades\HooksAPIFacade;
 
-class Hooks
+use PoP\Engine\Hooks\AbstractHookSet;
+
+class Hooks extends AbstractHookSet
 {
     const AUTHOR_RESTFIELDS = 'author.id|name|url';
 
-    public function __construct() {
-        HooksAPIFacade::getInstance()->addFilter(
+    protected function init()
+    {
+        $this->hooksAPI->addFilter(
             'Posts:RESTFields',
             [$this, 'getRESTFields']
         );
