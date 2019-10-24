@@ -7,6 +7,14 @@ services:
             PoP\Hooks\HooksAPIInterface: '@hooks_api'
             PoP\Translation\TranslationAPIInterface: '@translation_api'
 
-    PoP\Users\ConditionalHooks\:
-        resource: '../src/ConditionalHooks/*'
+    PoP\Users\RouteModuleProcessors\:
+        resource: '../src/RouteModuleProcessors/*'
+        public: true
+
+    PoP\Users\Conditional\Posts\Hooks\:
+        resource: '../src/Conditional/Posts/Hooks/*'
+        public: true
+
+    PoP\Users\Conditional\Posts\RouteModuleProcessors\:
+        resource: '../src/Conditional/Posts/RouteModuleProcessors/*'
         public: true
