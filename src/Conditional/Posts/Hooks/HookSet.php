@@ -3,7 +3,7 @@ namespace PoP\Users\Conditional\Posts\Hooks;
 
 use PoP\Engine\Hooks\AbstractHookSet;
 
-class Hooks extends AbstractHookSet
+class HookSet extends AbstractHookSet
 {
     const AUTHOR_RESTFIELDS = 'author.id|name|url';
 
