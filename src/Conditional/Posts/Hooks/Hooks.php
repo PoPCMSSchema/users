@@ -1,5 +1,5 @@
 <?php
-namespace PoP\Users\ConditionalHooks\Posts;
+namespace PoP\Users\Conditional\Posts\Hooks;
 
 use PoP\Engine\Hooks\AbstractHookSet;
 
