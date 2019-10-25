@@ -7,14 +7,22 @@ services:
             PoP\Hooks\HooksAPIInterface: '@hooks_api'
             PoP\Translation\TranslationAPIInterface: '@translation_api'
 
-    PoP\Users\RouteModuleProcessors\:
-        resource: '../src/RouteModuleProcessors/*'
+    PoP\Users\Conditional\API\RouteModuleProcessors\:
+        resource: '../src/Conditional/API/RouteModuleProcessors/*'
+        public: true
+
+    PoP\Users\Conditional\RESTAPI\RouteModuleProcessors\:
+        resource: '../src/Conditional/RESTAPI/RouteModuleProcessors/*'
         public: true
 
     PoP\Users\Conditional\Posts\Hooks\:
         resource: '../src/Conditional/Posts/Hooks/*'
         public: true
 
-    PoP\Users\Conditional\Posts\RouteModuleProcessors\:
-        resource: '../src/Conditional/Posts/RouteModuleProcessors/*'
+    PoP\Users\Conditional\Posts\Conditional\API\RouteModuleProcessors\:
+        resource: '../src/Conditional/Posts/Conditional/API/RouteModuleProcessors/*'
+        public: true
+
+    PoP\Users\Conditional\Posts\Conditional\RESTAPI\RouteModuleProcessors\:
+        resource: '../src/Conditional/Posts/Conditional/RESTAPI/RouteModuleProcessors/*'
         public: true
