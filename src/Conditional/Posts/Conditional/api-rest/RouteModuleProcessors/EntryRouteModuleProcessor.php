@@ -1,5 +1,5 @@
 <?php
-namespace PoP\Users\Conditional\Posts\Conditional\RESTAPI\RouteModuleProcessors;
+namespace PoP\Users\Conditional\posts\Conditional\api-rest\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\ComponentModel\Engine_Vars;
@@ -28,7 +28,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
             self::$restFieldsQuery = (string) HooksAPIFacade::getInstance()->applyFilters(
                 'Users:Posts:RESTFields',
                 str_replace(
-                    ','.\PoP\Users\Conditional\Posts\Hooks\HookSet::AUTHOR_RESTFIELDS,
+                    ','.\PoP\Users\Conditional\posts\Hooks\HookSet::AUTHOR_RESTFIELDS,
                     '',
                     \PoP\Posts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessor::getRESTFieldsQuery()
                 )
