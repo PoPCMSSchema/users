@@ -10,13 +10,6 @@ class ServiceConfiguration
 
     protected static function configure()
     {
-        // Add RouteModuleProcessors to the Manager
-        ContainerBuilderUtils::injectServicesIntoService(
-            'route_module_processor_manager',
-            'PoP\\Users\\RouteModuleProcessors',
-            'add'
-        );
-
         // Load API and RESTAPI conditional classes
         if (class_exists('\PoP\API\Component') && \PoP\API\Component::isEnabled()) {
             ContainerBuilderUtils::injectServicesIntoService(
@@ -24,13 +17,13 @@ class ServiceConfiguration
                 'PoP\\Users\\Conditional\\API\\RouteModuleProcessors',
                 'add'
             );
-            if (class_exists('\PoP\RESTAPI\Component')) {
-                ContainerBuilderUtils::injectServicesIntoService(
-                    'route_module_processor_manager',
-                    'PoP\\Users\\Conditional\\RESTAPI\\RouteModuleProcessors',
-                    'add'
-                );
-            }
+        }
+        if (class_exists('\PoP\RESTAPI\Component') && \PoP\RESTAPI\Component::isEnabled()) {
+            ContainerBuilderUtils::injectServicesIntoService(
+                'route_module_processor_manager',
+                'PoP\\Users\\Conditional\\RESTAPI\\RouteModuleProcessors',
+                'add'
+            );
         }
 
         // Load Posts conditional classes
@@ -42,13 +35,13 @@ class ServiceConfiguration
                     'PoP\\Users\\Conditional\\Posts\\Conditional\\API\\RouteModuleProcessors',
                     'add'
                 );
-                if (class_exists('\PoP\RESTAPI\Component')) {
-                    ContainerBuilderUtils::injectServicesIntoService(
-                        'route_module_processor_manager',
-                        'PoP\\Users\\Conditional\\Posts\\Conditional\\RESTAPI\\RouteModuleProcessors',
-                        'add'
-                    );
-                }
+            }
+            if (class_exists('\PoP\RESTAPI\Component') && \PoP\RESTAPI\Component::isEnabled()) {
+                ContainerBuilderUtils::injectServicesIntoService(
+                    'route_module_processor_manager',
+                    'PoP\\Users\\Conditional\\Posts\\Conditional\\RESTAPI\\RouteModuleProcessors',
+                    'add'
+                );
             }
         }
     }
