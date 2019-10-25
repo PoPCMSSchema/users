@@ -27,6 +27,8 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
+        "getpop/api": "Integrates well with API",
+        "getpop/api-rest": "Integrates well with REST API",
         "getpop/posts": "Integrates well with posts"
     },
     "autoload": {
