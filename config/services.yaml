@@ -7,6 +7,10 @@ services:
             PoP\Hooks\HooksAPIInterface: '@hooks_api'
             PoP\Translation\TranslationAPIInterface: '@translation_api'
 
+    PoP\Users\FieldResolvers\:
+        resource: '../src/FieldResolvers/*'
+        public: true
+
     PoP\Users\Conditional\API\RouteModuleProcessors\:
         resource: '../src/Conditional/API/RouteModuleProcessors/*'
         public: true
