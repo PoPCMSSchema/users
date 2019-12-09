@@ -2,7 +2,7 @@
 namespace PoP\Users\TypeResolvers;
 
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
-use PoP\Users\TypeDataResolvers\ConvertibleUserTypeDataResolver;
+use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
 
 class UserTypeResolver extends AbstractTypeResolver
 {
@@ -22,7 +22,7 @@ class UserTypeResolver extends AbstractTypeResolver
 
     public function getIdFieldTypeDataResolverClass(): string
     {
-        return ConvertibleUserTypeDataResolver::class;
+        return UserTypeDataResolver::class;
     }
 }
 

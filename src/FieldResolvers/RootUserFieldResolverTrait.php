@@ -4,7 +4,7 @@ namespace PoP\Users\FieldResolvers;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Users\TypeDataResolvers\ConvertibleUserTypeDataResolver;
+use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
 
 trait RootUserFieldResolverTrait
 {
@@ -76,7 +76,7 @@ trait RootUserFieldResolverTrait
     {
         switch ($fieldName) {
             case 'user':
-                return ConvertibleUserTypeDataResolver::class;
+                return UserTypeDataResolver::class;
         }
 
         return parent::resolveFieldDefaultTypeDataResolverClass($typeResolver, $fieldName, $fieldArgs);

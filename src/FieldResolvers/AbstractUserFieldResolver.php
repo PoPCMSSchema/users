@@ -6,7 +6,7 @@ use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
-use PoP\Users\TypeDataResolvers\ConvertibleUserTypeDataResolver;
+use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
 
 abstract class AbstractUserFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -84,7 +84,7 @@ abstract class AbstractUserFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'users':
-                return ConvertibleUserTypeDataResolver::class;
+                return UserTypeDataResolver::class;
         }
 
         return parent::resolveFieldDefaultTypeDataResolverClass($typeResolver, $fieldName, $fieldArgs);
