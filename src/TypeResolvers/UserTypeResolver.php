@@ -20,7 +20,7 @@ class UserTypeResolver extends AbstractTypeResolver
         return $cmsusersresolver->getUserId($user);
     }
 
-    public function getIdFieldTypeDataResolverClass(): string
+    public function getTypeDataResolverClass(): string
     {
         return UserTypeDataResolver::class;
     }

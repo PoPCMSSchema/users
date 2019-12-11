@@ -3,18 +3,12 @@ namespace PoP\Users\TypeDataResolvers;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
-use PoP\Users\TypeResolvers\UserTypeResolver;
 
 class UserTypeDataResolver extends AbstractTypeQueryableDataResolver
 {
     public function getDataquery()
     {
         return GD_DATAQUERY_USER;
-    }
-
-    public function getTypeResolverClass(): string
-    {
-        return UserTypeResolver::class;
     }
 
     public function getFilterDataloadingModule(): ?array
