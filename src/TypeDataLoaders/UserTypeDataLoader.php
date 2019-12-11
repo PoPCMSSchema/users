@@ -16,7 +16,7 @@ class UserTypeDataLoader extends AbstractTypeQueryableDataResolver
         return [\PoP_Users_Module_Processor_FieldDataloads::class, \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_USERLIST_FIELDS];
     }
 
-    public function resolveObjectsFromIDs(array $ids): array
+    public function getObjects(array $ids): array
     {
         $cmsusersapi = \PoP\Users\FunctionAPIFactory::getInstance();
         $ret = array();
