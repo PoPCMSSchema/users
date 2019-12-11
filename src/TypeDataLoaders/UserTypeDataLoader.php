@@ -1,10 +1,10 @@
 <?php
-namespace PoP\Users\TypeDataResolvers;
+namespace PoP\Users\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
+use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataResolver;
 
-class UserTypeDataResolver extends AbstractTypeQueryableDataResolver
+class UserTypeDataLoader extends AbstractTypeQueryableDataResolver
 {
     public function getDataquery()
     {
@@ -47,7 +47,7 @@ class UserTypeDataResolver extends AbstractTypeQueryableDataResolver
     protected function getQueryHookName()
     {
         // Get the role either from a provided attr, and allow PoP User Platform to set the default role
-        return 'UserTypeDataResolver:query';
+        return 'UserTypeDataLoader:query';
     }
 
     public function executeQuery($query, array $options = [])

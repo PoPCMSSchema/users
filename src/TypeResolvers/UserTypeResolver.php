@@ -2,7 +2,7 @@
 namespace PoP\Users\TypeResolvers;
 
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
-use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
+use PoP\Users\TypeDataLoaders\UserTypeDataLoader;
 
 class UserTypeResolver extends AbstractTypeResolver
 {
@@ -20,9 +20,9 @@ class UserTypeResolver extends AbstractTypeResolver
         return $cmsusersresolver->getUserId($user);
     }
 
-    public function getTypeDataResolverClass(): string
+    public function getTypeDataLoaderClass(): string
     {
-        return UserTypeDataResolver::class;
+        return UserTypeDataLoader::class;
     }
 }
 
