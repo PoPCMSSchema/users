@@ -6,7 +6,7 @@ use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
 
 class UserTypeResolver extends AbstractTypeResolver
 {
-    public const NAME = 'users';
+    public const NAME = 'User';
 
     public function getTypeName(): string
     {
