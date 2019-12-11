@@ -35,9 +35,9 @@ class Component extends AbstractComponent
 
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__.'\\FieldResolvers');
 
-        // Initialize all conditional hooks
+        // Initialize all conditional components
         if (class_exists('\PoP\Posts\Component')) {
-            ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__.'\\Conditional\\Posts\\Hooks');
+            \PoP\Users\Conditional\Posts\ComponentBoot::boot();
         }
     }
 }

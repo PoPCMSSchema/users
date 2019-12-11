@@ -11,6 +11,10 @@ services:
         resource: '../src/FieldResolvers/*'
         public: true
 
+    PoP\Users\Conditional\Posts\FieldResolvers\:
+        resource: '../src/Conditional/Posts/FieldResolvers/*'
+        public: true
+
     PoP\Users\Conditional\API\RouteModuleProcessors\:
         resource: '../src/Conditional/API/RouteModuleProcessors/*'
         public: true
