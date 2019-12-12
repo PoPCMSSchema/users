@@ -1,8 +1,9 @@
 <?php
 namespace PoP\Users\TypeResolvers;
 
-use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
+use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\Users\TypeDataLoaders\UserTypeDataLoader;
+use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
 class UserTypeResolver extends AbstractTypeResolver
 {
@@ -11,6 +12,12 @@ class UserTypeResolver extends AbstractTypeResolver
     public function getTypeName(): string
     {
         return self::NAME;
+    }
+
+    public function getSchemaTypeDescription(): ?string
+    {
+        $translationAPI = TranslationAPIFacade::getInstance();
+        return $translationAPI->__('Representation of a user', 'users');
     }
 
     public function getId($resultItem)
