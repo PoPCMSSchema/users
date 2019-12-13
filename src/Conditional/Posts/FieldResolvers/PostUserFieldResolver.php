@@ -17,7 +17,7 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'posts' => $translationAPI->__('The IDs of the user\'s posts', ''),
+            'posts' => $translationAPI->__('Posts by the user', ''),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

@@ -29,7 +29,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'users' => $translationAPI->__('IDs of the users', 'pop-users'),
+			'users' => $translationAPI->__('Users', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

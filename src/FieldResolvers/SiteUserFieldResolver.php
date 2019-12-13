@@ -21,8 +21,8 @@ class SiteUserFieldResolver extends AbstractUserFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'user' => $translationAPI->__('ID of the user', 'pop-users'),
-			'users' => $translationAPI->__('IDs of the users in the site', 'pop-users'),
+			'user' => $translationAPI->__('User with a specific ID', 'pop-users'),
+			'users' => $translationAPI->__('Users in the site', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

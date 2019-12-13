@@ -30,7 +30,7 @@ trait RootUserFieldResolverTrait
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'user' => $translationAPI->__('ID of the user', 'pop-users'),
+			'user' => $translationAPI->__('User with a specific ID', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
