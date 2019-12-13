@@ -20,7 +20,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'users' => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_ID),
+			'users' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -42,7 +42,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                 $schemaDefinitions = $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName);
                 // $schemaDefinitions[] = [
                 //     SchemaDefinition::ARGNAME_NAME => 'emails',
-                //     SchemaDefinition::ARGNAME_TYPE => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_EMAIL),
+                //     SchemaDefinition::ARGNAME_TYPE => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_EMAIL),
                 //     SchemaDefinition::ARGNAME_DESCRIPTION => $translationAPI->__('Filter users by email address', 'users'),
                 // ];
                 return $schemaDefinitions;
