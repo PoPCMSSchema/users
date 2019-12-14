@@ -2,9 +2,9 @@
 namespace PoP\Users\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataResolver;
+use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 
-class UserTypeDataLoader extends AbstractTypeQueryableDataResolver
+class UserTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
     public function getDataquery()
     {
