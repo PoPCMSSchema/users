@@ -98,7 +98,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
                 return $cmsusersresolver->getUserEmail($user);
 
             case 'url':
-                return $cmsusersapi->getUserURL($typeResolver->getId($user));
+                return $cmsusersapi->getUserURL($typeResolver->getID($user));
 
             case 'endpoint':
                 return \PoP\API\APIUtils::getEndpoint($typeResolver->resolveValue($resultItem, 'url', $variables, $expressions, $options));
