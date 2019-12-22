@@ -18,6 +18,7 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'posts' => $translationAPI->__('Posts by the user', ''),
+            'content' => $translationAPI->__('Content by the user', ''),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -29,7 +30,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
         $user = $resultItem;
         switch ($fieldName) {
             case 'posts':
-                $query['authors'] = [$typeResolver->getId($user)];
+            case 'content':
+                $query['authors'] = [$typeResolver->getID($user)];
                 break;
         }
 
