@@ -2,18 +2,20 @@
 namespace PoP\Users\Conditional\Posts\FieldResolvers;
 
 use PoP\Posts\Facades\PostTypeAPIFacade;
-use PoP\Posts\TypeResolvers\PostTypeResolver;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
+use PoP\Content\FieldInterfaces\ContentEntityFieldInterfaceResolver;
 
 class PostFieldResolver extends AbstractDBDataFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
-        return array(PostTypeResolver::class);
+        return [
+            ContentEntityFieldInterfaceResolver::class,
+        ];
     }
 
     public static function getFieldNamesToResolve(): array
