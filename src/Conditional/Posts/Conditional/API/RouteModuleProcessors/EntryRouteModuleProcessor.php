@@ -12,7 +12,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 
         // Author's posts
         $routemodules = array(
-            POP_POSTS_ROUTE_POSTS => [\PoP_Users_Posts_Module_Processor_FieldDataloads::class, \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_AUTHORPOSTLIST_FIELDS],
+            POP_POSTS_ROUTE_POSTS => [\PoP_Users_Posts_Module_Processor_FieldDataloads::class, \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_AUTHORPOSTLIST],
         );
         foreach ($routemodules as $route => $module) {
             $ret[RouteNatures::USER][$route][] = [

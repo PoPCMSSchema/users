@@ -44,7 +44,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $vars = Engine_Vars::getVars();
         // Author's posts
         $routemodules = array(
-            POP_POSTS_ROUTE_POSTS => [\PoP_Users_Posts_Module_Processor_FieldDataloads::class, \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_AUTHORPOSTLIST_FIELDS, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+            POP_POSTS_ROUTE_POSTS => [\PoP_Users_Posts_Module_Processor_FieldDataloads::class, \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_AUTHORPOSTLIST, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
         );
         foreach ($routemodules as $route => $module) {
             $ret[RouteNatures::USER][$route][] = [
