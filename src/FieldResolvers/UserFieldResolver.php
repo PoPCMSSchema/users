@@ -18,17 +18,17 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
     {
         return [
             'username',
-            'user-nicename',
+            'userNicename',
             'nicename',
             'name',
-            'display-name',
+            'displayName',
             'firstname',
             'lastname',
             'email',
             'url',
             'endpoint',
             'description',
-            'website-url',
+            'websiteURL',
         ];
     }
 
@@ -36,17 +36,17 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
     {
         $types = [
 			'username' => SchemaDefinition::TYPE_STRING,
-            'user-nicename' => SchemaDefinition::TYPE_STRING,
+            'userNicename' => SchemaDefinition::TYPE_STRING,
             'nicename' => SchemaDefinition::TYPE_STRING,
             'name' => SchemaDefinition::TYPE_STRING,
-            'display-name' => SchemaDefinition::TYPE_STRING,
+            'displayName' => SchemaDefinition::TYPE_STRING,
             'firstname' => SchemaDefinition::TYPE_STRING,
             'lastname' => SchemaDefinition::TYPE_STRING,
             'email' => SchemaDefinition::TYPE_EMAIL,
             'url' => SchemaDefinition::TYPE_URL,
             'endpoint' => SchemaDefinition::TYPE_URL,
             'description' => SchemaDefinition::TYPE_STRING,
-            'website-url' => SchemaDefinition::TYPE_URL,
+            'websiteURL' => SchemaDefinition::TYPE_URL,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -56,17 +56,17 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
 			'username' => $translationAPI->__('User\'s username handle', 'pop-users'),
-            'user-nicename' => $translationAPI->__('User\'s nice name', 'pop-users'),
+            'userNicename' => $translationAPI->__('User\'s nice name', 'pop-users'),
             'nicename' => $translationAPI->__('User\'s nice name', 'pop-users'),
             'name' => $translationAPI->__('Name of the user', 'pop-users'),
-            'display-name' => $translationAPI->__('Name of the user as displayed on the website', 'pop-users'),
+            'displayName' => $translationAPI->__('Name of the user as displayed on the website', 'pop-users'),
             'firstname' => $translationAPI->__('User\'s first name', 'pop-users'),
             'lastname' => $translationAPI->__('User\'s last name', 'pop-users'),
             'email' => $translationAPI->__('User\'s email', 'pop-users'),
             'url' => $translationAPI->__('URL of the user\'s profile in the website', 'pop-users'),
             'endpoint' => $translationAPI->__('Endpoint to fetch the user\'s data', 'pop-users'),
             'description' => $translationAPI->__('Description of the user', 'pop-users'),
-            'website-url' => $translationAPI->__('User\'s own website\'s URL', 'pop-users'),
+            'websiteURL' => $translationAPI->__('User\'s own website\'s URL', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -80,12 +80,12 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
             case 'username':
                 return $cmsusersresolver->getUserLogin($user);
 
-            case 'user-nicename':
+            case 'userNicename':
             case 'nicename':
                 return $cmsusersresolver->getUserNicename($user);
 
             case 'name':
-            case 'display-name':
+            case 'displayName':
                 return $cmsusersresolver->getUserDisplayName($user);
 
             case 'firstname':
@@ -106,7 +106,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
             case 'description':
                 return $cmsusersresolver->getUserDescription($user);
 
-            case 'website-url':
+            case 'websiteURL':
                 return $cmsusersresolver->getUserWebsiteUrl($user);
         }
 
