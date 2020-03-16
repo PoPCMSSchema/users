@@ -13,7 +13,7 @@ class ComponentBoot
      *
      * @return void
      */
-    public static function boot()
+    public static function prematureBoot()
     {
         ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__.'\\Hooks');
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__.'\\FieldResolvers');
