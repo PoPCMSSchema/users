@@ -36,18 +36,16 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
 
     public function getSchemaFieldArgs(TypeResolverInterface $typeResolver, string $fieldName): array
     {
+        $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
         $translationAPI = TranslationAPIFacade::getInstance();
         switch ($fieldName) {
             case 'users':
-                $schemaDefinitions = $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName);
-                // $schemaDefinitions[] = [
-                //     SchemaDefinition::ARGNAME_NAME => 'emails',
-                //     SchemaDefinition::ARGNAME_TYPE => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_EMAIL),
-                //     SchemaDefinition::ARGNAME_DESCRIPTION => $translationAPI->__('Filter users by email address', 'users'),
-                // ];
-                return $schemaDefinitions;
+                return array_merge(
+                    $schemaFieldArgs,
+                    $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName)
+                );
         }
-        return parent::getSchemaFieldArgs($typeResolver, $fieldName);
+        return $schemaFieldArgs;
     }
 
     public function enableOrderedSchemaFieldArgs(TypeResolverInterface $typeResolver, string $fieldName): bool
@@ -67,9 +65,6 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                 $query = [
                     'limit' => -1,
                 ];
-                // if (isset($fieldArgs['emails'])) {
-                //     $query['emails'] = $fieldArgs['emails'];
-                // }
                 $options = [
                     'return-type' => POP_RETURNTYPE_IDS,
                 ];
