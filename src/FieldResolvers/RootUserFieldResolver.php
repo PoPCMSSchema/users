@@ -1,7 +1,7 @@
 <?php
 namespace PoP\Users\FieldResolvers;
 
-use PoP\API\TypeResolvers\RootTypeResolver;
+use PoP\Engine\TypeResolvers\RootTypeResolver;
 use PoP\Users\FieldResolvers\AbstractUserFieldResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
