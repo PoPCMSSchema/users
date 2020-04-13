@@ -35,7 +35,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'username' => SchemaDefinition::TYPE_STRING,
+            'username' => SchemaDefinition::TYPE_STRING,
             'userNicename' => SchemaDefinition::TYPE_STRING,
             'nicename' => SchemaDefinition::TYPE_STRING,
             'name' => SchemaDefinition::TYPE_STRING,
@@ -55,7 +55,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'username' => $translationAPI->__('User\'s username handle', 'pop-users'),
+            'username' => $translationAPI->__('User\'s username handle', 'pop-users'),
             'userNicename' => $translationAPI->__('User\'s nice name', 'pop-users'),
             'nicename' => $translationAPI->__('User\'s nice name', 'pop-users'),
             'name' => $translationAPI->__('Name of the user', 'pop-users'),

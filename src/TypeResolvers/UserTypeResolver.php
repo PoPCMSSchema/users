@@ -32,4 +32,3 @@ class UserTypeResolver extends AbstractTypeResolver
         return UserTypeDataLoader::class;
     }
 }
-

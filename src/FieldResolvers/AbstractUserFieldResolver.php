@@ -13,14 +13,14 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     public static function getFieldNamesToResolve(): array
     {
         return [
-			'users',
+            'users',
         ];
     }
 
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'users' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'users' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -29,7 +29,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'users' => $translationAPI->__('Users', 'pop-users'),
+            'users' => $translationAPI->__('Users', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

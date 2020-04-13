@@ -17,6 +17,6 @@ class HookSet extends AbstractHookSet
 
     public function getRESTFields($restFields): string
     {
-        return $restFields.','.self::AUTHOR_RESTFIELDS;
+        return $restFields . ',' . self::AUTHOR_RESTFIELDS;
     }
 }

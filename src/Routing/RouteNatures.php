@@ -1,6 +1,7 @@
 <?php
 namespace PoP\Users\Routing;
 
-class RouteNatures {
+class RouteNatures
+{
     public const USER = 'user';
 }

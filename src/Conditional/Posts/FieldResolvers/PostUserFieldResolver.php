@@ -23,7 +23,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
 
-    protected function getQuery(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = []): array {
+    protected function getQuery(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = []): array
+    {
 
         $query = parent::getQuery($typeResolver, $resultItem, $fieldName, $fieldArgs);
 

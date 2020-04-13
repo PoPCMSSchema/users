@@ -29,8 +29,8 @@ class RootUserFieldResolver extends AbstractUserFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'user' => $translationAPI->__('User with a specific ID', 'pop-users'),
-			'users' => $translationAPI->__('Users in the current site', 'pop-users'),
+            'user' => $translationAPI->__('User with a specific ID', 'pop-users'),
+            'users' => $translationAPI->__('Users in the current site', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -38,7 +38,7 @@ class RootUserFieldResolver extends AbstractUserFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'user' => SchemaDefinition::TYPE_ID,
+            'user' => SchemaDefinition::TYPE_ID,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
