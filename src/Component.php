@@ -17,6 +17,20 @@ class Component extends AbstractComponent
     use YAMLServicesTrait;
     // const VERSION = '0.1.0';
 
+    public static function getDependedComponentClasses(): array
+    {
+        return [
+            \PoP\QueriedObject\Component::class,
+        ];
+    }
+
+    public static function getDependedMigrationPlugins(): array
+    {
+        return [
+            'migrate-users',
+        ];
+    }
+
     /**
      * Initialize services
      */
