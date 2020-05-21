@@ -20,12 +20,13 @@ Via Composer
 composer require getpop/users
 ```
 
-<!--
 ## Usage
 
+Initialize the component:
+
 ``` php
+\PoP\Users\Component::initialize();
 ```
--->
 
 ## Standards
 
