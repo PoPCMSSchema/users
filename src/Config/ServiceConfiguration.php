@@ -11,7 +11,7 @@ class ServiceConfiguration
 {
     use PHPServiceConfigurationTrait;
 
-    protected static function configure()
+    protected static function configure(): void
     {
         // Load API and RESTAPI conditional classes
         if (class_exists('\PoP\API\Component') && \PoP\API\Component::isEnabled()) {
