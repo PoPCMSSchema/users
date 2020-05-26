@@ -25,7 +25,9 @@ composer require getpop/users
 Initialize the component:
 
 ``` php
-\PoP\Users\Component::initialize();
+\PoP\Root\ComponentLoader::initializeComponents([
+    \PoP\Users\Component::class,
+]);
 ```
 
 ## Standards
