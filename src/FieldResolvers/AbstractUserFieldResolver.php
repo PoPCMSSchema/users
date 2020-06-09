@@ -18,6 +18,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     {
         return [
             'users',
+            'userCount',
         ];
     }
 
@@ -25,6 +26,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     {
         $types = [
             'users' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
+            'userCount' => SchemaDefinition::TYPE_INT,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -34,6 +36,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'users' => $translationAPI->__('Users', 'pop-users'),
+            'userCount' => $translationAPI->__('Number of users', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -73,6 +76,8 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmsusersapi->getUsers($query, $options);
+            case 'userCount':
+                return $cmsusersapi->getUserCount();
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
