@@ -10,6 +10,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoP\Users\ComponentConfiguration;
 
 abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -65,7 +66,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
         switch ($fieldName) {
             case 'users':
                 $query = [
-                    'limit' => -1,
+                    'limit' => ComponentConfiguration::getUserListDefaultLimit(),
                 ];
                 $options = [
                     'return-type' => POP_RETURNTYPE_IDS,
