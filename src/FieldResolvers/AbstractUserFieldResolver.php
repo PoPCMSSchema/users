@@ -46,6 +46,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
         $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
         switch ($fieldName) {
             case 'users':
+            case 'userCount':
                 return array_merge(
                     $schemaFieldArgs,
                     $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName)
@@ -58,9 +59,19 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
     {
         switch ($fieldName) {
             case 'users':
+            case 'userCount':
                 return false;
         }
         return parent::enableOrderedSchemaFieldArgs($typeResolver, $fieldName);
+    }
+
+    protected function getFieldDefaultFilterDataloadingModule(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?array
+    {
+        switch ($fieldName) {
+            case 'userCount':
+                return [\PoP_Users_Module_Processor_FieldDataloads::class, \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_USERCOUNT];
+        }
+        return parent::getFieldDefaultFilterDataloadingModule($typeResolver, $fieldName, $fieldArgs);
     }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
@@ -77,7 +88,9 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmsusersapi->getUsers($query, $options);
             case 'userCount':
-                return $cmsusersapi->getUserCount();
+                $options = [];
+                $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
+                return $cmsusersapi->getUserCount([], $options);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
