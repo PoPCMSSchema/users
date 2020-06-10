@@ -70,6 +70,9 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // Initialize all conditional components
+        if (class_exists('\PoP\Content\Component')) {
+            \PoP\Users\Conditional\Content\ComponentBoot::beforeBoot();
+        }
         if (class_exists('\PoP\Posts\Component')) {
             \PoP\Users\Conditional\Posts\ComponentBoot::beforeBoot();
         }

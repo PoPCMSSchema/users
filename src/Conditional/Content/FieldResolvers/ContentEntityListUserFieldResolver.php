@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Conditional\Posts\FieldResolvers;
+namespace PoP\Users\Conditional\Content\FieldResolvers;
 
+use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Posts\FieldResolvers\AbstractPostFieldResolver;
-use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoP\Content\FieldResolvers\AbstractContentEntityListFieldResolver;
 
-class PostUserFieldResolver extends AbstractPostFieldResolver
+class ContentEntityListUserFieldResolver extends AbstractContentEntityListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
@@ -20,8 +20,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'posts' => $translationAPI->__('Posts by the user', 'users'),
-            'postCount' => $translationAPI->__('Number of posts by the user', 'users'),
+            'contentEntities' => $translationAPI->__('Entries considered “content” (eg: posts, events) by the user', 'pop-users'),
+            'contentEntityCount' => $translationAPI->__('Number of entries considered “content” (eg: posts, events) by the user', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
 
         $user = $resultItem;
         switch ($fieldName) {
-            case 'posts':
-            case 'postCount':
+            case 'contentEntities':
+            case 'contentEntityCount':
                 $query['authors'] = [$typeResolver->getID($user)];
                 break;
         }
