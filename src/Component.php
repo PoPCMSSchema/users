@@ -61,13 +61,17 @@ class Component extends AbstractComponent
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
 
-        if (class_exists('\PoP\Content\Component')) {
+        if (class_exists('\PoP\Content\Component')
+            && !in_array(\PoP\Content\Component::class, $skipSchemaComponentClasses)
+        ) {
             \PoP\Users\Conditional\Content\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
         }
-        if (class_exists('\PoP\Posts\Component')) {
+        if (class_exists('\PoP\Posts\Component')
+            && !in_array(\PoP\Posts\Component::class, $skipSchemaComponentClasses)
+        ) {
             \PoP\Users\Conditional\Posts\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
