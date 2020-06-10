@@ -15,8 +15,11 @@ class ConditionalComponent
 {
     use YAMLServicesTrait;
 
-    public static function initialize(array $configuration = [], bool $skipSchema = false): void
-    {
+    public static function initialize(
+        array $configuration = [],
+        bool $skipSchema = false,
+        array $skipSchemaComponentClasses = []
+    ): void {
         self::initYAMLServices(Component::$COMPONENT_DIR, '/Conditional/Posts');
         self::maybeInitYAMLSchemaServices(Component::$COMPONENT_DIR, $skipSchema, '/Conditional/Posts');
     }
