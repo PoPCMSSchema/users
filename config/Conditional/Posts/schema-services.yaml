@@ -1,0 +1,4 @@
+services:
+    PoP\Users\Conditional\Posts\FieldResolvers\:
+        resource: '../../../src/Conditional/Posts/FieldResolvers/*'
+        public: true

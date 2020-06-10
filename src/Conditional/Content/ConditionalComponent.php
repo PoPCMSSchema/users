@@ -4,13 +4,22 @@ declare(strict_types=1);
 
 namespace PoP\Users\Conditional\Content;
 
+use PoP\Users\Component;
+use PoP\Root\Component\YAMLServicesTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 /**
  * Initialize component
  */
-class ComponentBoot
+class ConditionalComponent
 {
+    use YAMLServicesTrait;
+
+    public static function initialize(array $configuration = [], bool $skipSchema = false): void
+    {
+        self::maybeInitYAMLSchemaServices(Component::$COMPONENT_DIR, $skipSchema, '/Conditional/Content');
+    }
+
     /**
      * Boot component
      *

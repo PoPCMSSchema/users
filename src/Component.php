@@ -14,6 +14,7 @@ use PoP\ComponentModel\Container\ContainerBuilderUtils;
  */
 class Component extends AbstractComponent
 {
+    public static $COMPONENT_DIR;
     use YAMLServicesTrait;
     // const VERSION = '0.1.0';
 
@@ -52,9 +53,23 @@ class Component extends AbstractComponent
     {
         parent::doInitialize($configuration, $skipSchema);
         ComponentConfiguration::setConfiguration($configuration);
-        self::initYAMLServices(dirname(__DIR__));
-        self::maybeInitYAMLSchemaServices(dirname(__DIR__), $skipSchema);
+        self::$COMPONENT_DIR = dirname(__DIR__);
+        self::initYAMLServices(self::$COMPONENT_DIR);
+        self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
+
+        if (class_exists('\PoP\Content\Component')) {
+            \PoP\Users\Conditional\Content\ConditionalComponent::initialize(
+                $configuration,
+                $skipSchema
+            );
+        }
+        if (class_exists('\PoP\Posts\Component')) {
+            \PoP\Users\Conditional\Posts\ConditionalComponent::initialize(
+                $configuration,
+                $skipSchema
+            );
+        }
     }
 
     /**
@@ -72,10 +87,10 @@ class Component extends AbstractComponent
 
         // Initialize all conditional components
         if (class_exists('\PoP\Content\Component')) {
-            \PoP\Users\Conditional\Content\ComponentBoot::beforeBoot();
+            \PoP\Users\Conditional\Content\ConditionalComponent::beforeBoot();
         }
         if (class_exists('\PoP\Posts\Component')) {
-            \PoP\Users\Conditional\Posts\ComponentBoot::beforeBoot();
+            \PoP\Users\Conditional\Posts\ConditionalComponent::beforeBoot();
         }
     }
 }

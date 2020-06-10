@@ -6,11 +6,3 @@ services:
     PoP\Users\TypeResolvers\:
         resource: '../src/TypeResolvers/*'
         public: true
-
-    PoP\Users\Conditional\Content\FieldResolvers\:
-        resource: '../src/Conditional/Content/FieldResolvers/*'
-        public: true
-
-    PoP\Users\Conditional\Posts\FieldResolvers\:
-        resource: '../src/Conditional/Posts/FieldResolvers/*'
-        public: true
