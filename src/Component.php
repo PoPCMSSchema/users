@@ -61,8 +61,8 @@ class Component extends AbstractComponent
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
 
-        if (class_exists('\PoP\Content\Component')
-            && !in_array(\PoP\Content\Component::class, $skipSchemaComponentClasses)
+        if (class_exists('\PoP\CustomPosts\Component')
+            && !in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)
         ) {
             \PoP\Users\Conditional\Content\ConditionalComponent::initialize(
                 $configuration,
@@ -93,7 +93,7 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // Initialize all conditional components
-        if (class_exists('\PoP\Content\Component')) {
+        if (class_exists('\PoP\CustomPosts\Component')) {
             \PoP\Users\Conditional\Content\ConditionalComponent::beforeBoot();
         }
         if (class_exists('\PoP\Posts\Component')) {

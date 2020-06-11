@@ -7,7 +7,7 @@ namespace PoP\Users\Conditional\Content\FieldResolvers;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldResolvers\AbstractCustomPostListFieldResolver;
+use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
 
 class CustomPostListUserFieldResolver extends AbstractCustomPostListFieldResolver
 {
