@@ -20,8 +20,8 @@ class CustomPostListUserFieldResolver extends AbstractCustomPostListFieldResolve
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'contentEntities' => $translationAPI->__('Entries considered “content” (eg: posts, events) by the user', 'pop-users'),
-            'contentEntityCount' => $translationAPI->__('Number of entries considered “content” (eg: posts, events) by the user', 'pop-users'),
+            'customPosts' => $translationAPI->__('Custom posts by the user', 'pop-users'),
+            'customPostCount' => $translationAPI->__('Number of custom posts by the user', 'pop-users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class CustomPostListUserFieldResolver extends AbstractCustomPostListFieldResolve
 
         $user = $resultItem;
         switch ($fieldName) {
-            case 'contentEntities':
-            case 'contentEntityCount':
+            case 'customPosts':
+            case 'customPostCount':
                 $query['authors'] = [$typeResolver->getID($user)];
                 break;
         }
