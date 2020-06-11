@@ -7,9 +7,9 @@ namespace PoP\Users\Conditional\Content\FieldResolvers;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldResolvers\AbstractContentEntityListFieldResolver;
+use PoP\Content\FieldResolvers\AbstractCustomPostListFieldResolver;
 
-class ContentEntityListUserFieldResolver extends AbstractContentEntityListFieldResolver
+class CustomPostListUserFieldResolver extends AbstractCustomPostListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
