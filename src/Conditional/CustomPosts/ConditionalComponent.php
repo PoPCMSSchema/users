@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Conditional\Posts;
+namespace PoP\Users\Conditional\CustomPosts;
 
 use PoP\Users\Component;
 use PoP\Root\Component\YAMLServicesTrait;
