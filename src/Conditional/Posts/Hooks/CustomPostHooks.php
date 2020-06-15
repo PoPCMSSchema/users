@@ -7,7 +7,7 @@ namespace PoP\Users\Conditional\Posts\Hooks;
 use PoP\Engine\Hooks\AbstractHookSet;
 use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
 
-class HookSet extends AbstractHookSet
+class CustomPostHooks extends AbstractHookSet
 {
     const AUTHOR_RESTFIELDS = 'author.id|name|url';
 
