@@ -37,7 +37,6 @@ class Component extends AbstractComponent
         return [
             \PoP\API\Component::class,
             \PoP\RESTAPI\Component::class,
-            \PoP\Posts\Component::class,
         ];
     }
 

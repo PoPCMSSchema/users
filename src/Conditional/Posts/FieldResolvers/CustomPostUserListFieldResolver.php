@@ -6,10 +6,10 @@ namespace PoP\Users\Conditional\Posts\FieldResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Posts\FieldResolvers\AbstractPostFieldResolver;
+use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 
-class PostUserFieldResolver extends AbstractPostFieldResolver
+class CustomPostUserListFieldResolver extends AbstractCustomPostListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
@@ -20,8 +20,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'posts' => $translationAPI->__('Posts by the user', 'users'),
-            'postCount' => $translationAPI->__('Number of posts by the user', 'users'),
+            'customPosts' => $translationAPI->__('Custom posts by the user', 'users'),
+            'customPostCount' => $translationAPI->__('Number of custom posts by the user', 'users'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -32,8 +32,8 @@ class PostUserFieldResolver extends AbstractPostFieldResolver
 
         $user = $resultItem;
         switch ($fieldName) {
-            case 'posts':
-            case 'postCount':
+            case 'customPosts':
+            case 'customPostCount':
                 $query['authors'] = [$typeResolver->getID($user)];
                 break;
         }

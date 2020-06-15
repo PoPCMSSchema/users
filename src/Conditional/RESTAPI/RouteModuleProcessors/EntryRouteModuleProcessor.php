@@ -14,6 +14,8 @@ use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
+    public const HOOK_REST_FIELDS = __CLASS__ . ':RESTFields';
+
     private static $restFieldsQuery;
     private static $restFields;
     public static function getRESTFields(): array
@@ -30,11 +32,8 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     {
         if (is_null(self::$restFieldsQuery)) {
             $restFieldsQuery = 'id|name|url';
-            if (class_exists('\PoP\Posts\Component')) {
-                $restFieldsQuery .= ',posts.id|title|date|url';
-            }
             self::$restFieldsQuery = (string) HooksAPIFacade::getInstance()->applyFilters(
-                'Users:RESTFields',
+                self::HOOK_REST_FIELDS,
                 $restFieldsQuery
             );
         }
