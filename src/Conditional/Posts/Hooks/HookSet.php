@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PoP\Users\Conditional\Posts\Hooks;
 
 use PoP\Engine\Hooks\AbstractHookSet;
+use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
 
 class HookSet extends AbstractHookSet
 {
@@ -13,7 +14,7 @@ class HookSet extends AbstractHookSet
     protected function init()
     {
         $this->hooksAPI->addFilter(
-            'Posts:RESTFields',
+            EntryRouteModuleProcessorHelpers::HOOK_REST_FIELDS,
             [$this, 'getRESTFields']
         );
     }
