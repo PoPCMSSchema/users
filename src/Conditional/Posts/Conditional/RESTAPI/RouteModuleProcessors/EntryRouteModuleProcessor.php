@@ -10,6 +10,7 @@ use PoP\Hooks\Facades\HooksAPIFacade;
 use PoP\API\Facades\FieldQueryConvertorFacade;
 use PoP\Users\Routing\RouteNatures;
 use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
+use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
@@ -34,7 +35,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
                 str_replace(
                     ',' . \PoP\Users\Conditional\Posts\Hooks\HookSet::AUTHOR_RESTFIELDS,
                     '',
-                    \PoP\Posts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessor::getRESTFieldsQuery()
+                    EntryRouteModuleProcessorHelpers::getRESTFieldsQuery()
                 )
             );
         }
@@ -47,7 +48,15 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $vars = ApplicationState::getVars();
         // Author's posts
         $routemodules = array(
-            POP_POSTS_ROUTE_POSTS => [\PoP_Users_Posts_Module_Processor_FieldDataloads::class, \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_AUTHORPOSTLIST, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+            POP_POSTS_ROUTE_POSTS => [
+                \PoP_Users_Posts_Module_Processor_FieldDataloads::class,
+                \PoP_Users_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_AUTHORPOSTLIST,
+                [
+                    'fields' => isset($vars['query']) ?
+                        $vars['query'] :
+                        self::getRESTFields()
+                    ]
+                ],
         );
         foreach ($routemodules as $route => $module) {
             $ret[RouteNatures::USER][$route][] = [
