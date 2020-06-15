@@ -23,6 +23,7 @@
         "getpop/migrate-users": "dev-master"
     },
     "require-dev": {
+        "getpop/customposts": "dev-master",
         "getpop/api": "dev-master",
         "getpop/api-rest": "dev-master",
         "phpstan/phpstan": "^0.12",
@@ -30,6 +31,7 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
+        "getpop/customposts": "Integrates well with Custom Posts",
         "getpop/api": "Integrates well with API",
         "getpop/api-rest": "Integrates well with REST API"
     },

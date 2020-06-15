@@ -37,6 +37,7 @@ class Component extends AbstractComponent
         return [
             \PoP\API\Component::class,
             \PoP\RESTAPI\Component::class,
+            \PoP\CustomPosts\Component::class,
         ];
     }
 
@@ -65,7 +66,7 @@ class Component extends AbstractComponent
         if (class_exists('\PoP\CustomPosts\Component')
             && !in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Users\Conditional\Content\ConditionalComponent::initialize(
+            \PoP\Users\Conditional\CustomPosts\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -86,8 +87,8 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // Initialize all conditional components
-        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\Content\\FieldResolvers'))) {
-            \PoP\Users\Conditional\Content\ConditionalComponent::beforeBoot();
+        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\CustomPosts\\FieldResolvers'))) {
+            \PoP\Users\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
         }
     }
 }

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace PoP\Users\Conditional\CustomPosts\FieldResolvers;
 
-use PoP\Posts\Facades\PostTypeAPIFacade;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
+use PoP\Users\Conditional\CustomPosts\Facades\CustomPostUserTypeAPIFacade;
 
 class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -47,10 +47,10 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $postTypeAPI = PostTypeAPIFacade::getInstance();
+        $customPostUserTypeAPI = CustomPostUserTypeAPIFacade::getInstance();
         switch ($fieldName) {
             case 'author':
-                return $postTypeAPI->getAuthorID($resultItem);
+                return $customPostUserTypeAPI->getAuthorID($resultItem);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
