@@ -20,8 +20,16 @@ class ConditionalComponent
         bool $skipSchema = false,
         array $skipSchemaComponentClasses = []
     ): void {
-        self::initYAMLServices(Component::$COMPONENT_DIR, '/Conditional/Posts');
-        self::maybeInitYAMLSchemaServices(Component::$COMPONENT_DIR, $skipSchema, '/Conditional/Posts');
+        self::maybeInitYAMLSchemaServices(Component::$COMPONENT_DIR, $skipSchema, '/Conditional/CustomPosts');
+
+        if (class_exists('\PoP\RESTAPI\Component')
+            && !in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)
+        ) {
+            \PoP\Users\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::initialize(
+                $configuration,
+                $skipSchema
+            );
+        }
     }
 
     /**
@@ -31,7 +39,11 @@ class ConditionalComponent
      */
     public static function beforeBoot(): void
     {
-        ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__ . '\\Hooks');
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
+
+        // Initialize all conditional components
+        if (class_exists('\PoP\RESTAPI\Component')) {
+            \PoP\Users\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
+        }
     }
 }

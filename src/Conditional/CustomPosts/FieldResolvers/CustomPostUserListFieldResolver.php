@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Conditional\Posts\FieldResolvers;
+namespace PoP\Users\Conditional\CustomPosts\FieldResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;

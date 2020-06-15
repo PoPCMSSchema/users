@@ -70,14 +70,6 @@ class Component extends AbstractComponent
                 $skipSchema
             );
         }
-        if (class_exists('\PoP\Posts\Component')
-            && !in_array(\PoP\Posts\Component::class, $skipSchemaComponentClasses)
-        ) {
-            \PoP\Users\Conditional\Posts\ConditionalComponent::initialize(
-                $configuration,
-                $skipSchema
-            );
-        }
     }
 
     /**
@@ -94,11 +86,8 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // Initialize all conditional components
-        if (class_exists('\PoP\CustomPosts\Component')) {
+        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\Content\\FieldResolvers'))) {
             \PoP\Users\Conditional\Content\ConditionalComponent::beforeBoot();
-        }
-        if (class_exists('\PoP\Posts\Component')) {
-            \PoP\Users\Conditional\Posts\ConditionalComponent::beforeBoot();
         }
     }
 }
