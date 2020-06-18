@@ -4,17 +4,25 @@ declare(strict_types=1);
 
 namespace PoP\Users\FieldResolvers;
 
-use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\ComponentModel\Schema\SchemaDefinition;
-use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
-use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoP\ComponentModel\Schema\SchemaDefinition;
+use PoP\Translation\Facades\TranslationAPIFacade;
+use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
+use PoP\QueriedObject\FieldInterfaces\QueryableObjectFieldInterfaceResolver;
 
 class UserFieldResolver extends AbstractDBDataFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
         return array(UserTypeResolver::class);
+    }
+
+    public static function getImplementedInterfaceClasses(): array
+    {
+        return [
+            QueryableObjectFieldInterfaceResolver::class,
+        ];
     }
 
     public static function getFieldNamesToResolve(): array
@@ -29,6 +37,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
             'lastname',
             'email',
             'url',
+            'slug',
             'endpoint',
             'description',
             'websiteURL',
@@ -47,6 +56,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
             'lastname' => SchemaDefinition::TYPE_STRING,
             'email' => SchemaDefinition::TYPE_EMAIL,
             'url' => SchemaDefinition::TYPE_URL,
+            'slug' => SchemaDefinition::TYPE_STRING,
             'endpoint' => SchemaDefinition::TYPE_URL,
             'description' => SchemaDefinition::TYPE_STRING,
             'websiteURL' => SchemaDefinition::TYPE_URL,
@@ -67,6 +77,7 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
             'lastname' => $translationAPI->__('User\'s last name', 'pop-users'),
             'email' => $translationAPI->__('User\'s email', 'pop-users'),
             'url' => $translationAPI->__('URL of the user\'s profile in the website', 'pop-users'),
+            'slug' => $translationAPI->__('Slug of the URL of the user\'s profile in the website', 'pop-users'),
             'endpoint' => $translationAPI->__('Endpoint to fetch the user\'s data', 'pop-users'),
             'description' => $translationAPI->__('Description of the user', 'pop-users'),
             'websiteURL' => $translationAPI->__('User\'s own website\'s URL', 'pop-users'),
@@ -102,6 +113,9 @@ class UserFieldResolver extends AbstractDBDataFieldResolver
 
             case 'url':
                 return $cmsusersapi->getUserURL($typeResolver->getID($user));
+
+            case 'slug':
+                return $cmsusersresolver->getUserSlug($user);
 
             case 'endpoint':
                 return \PoP\API\APIUtils::getEndpoint($typeResolver->resolveValue($resultItem, 'url', $variables, $expressions, $options));
