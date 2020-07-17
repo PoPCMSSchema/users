@@ -37,41 +37,31 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         ];
     }
 
-    /**
-     * By returning `null`, the schema definition comes from the interface
-     *
-     * @return void
-     */
-    public function getSchemaDefinitionResolver(TypeResolverInterface $typeResolver): ?FieldSchemaDefinitionResolverInterface
+    public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
-        return null;
+        $types = [
+            'author' => SchemaDefinition::TYPE_ID,
+        ];
+        return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
 
-    // public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
-    // {
-    //     $types = [
-    //         'author' => SchemaDefinition::TYPE_ID,
-    //     ];
-    //     return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
-    // }
+    public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    {
+        $translationAPI = TranslationAPIFacade::getInstance();
+        $descriptions = [
+            'author' => $translationAPI->__('The post\'s author', ''),
+        ];
+        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
+    }
 
-    // public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
-    // {
-    //     $translationAPI = TranslationAPIFacade::getInstance();
-    //     $descriptions = [
-    //         'author' => $translationAPI->__('The ID of the post\'s author', ''),
-    //     ];
-    //     return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
-    // }
-
-    // public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
-    // {
-    //     switch ($fieldName) {
-    //         case 'author':
-    //             return true;
-    //     }
-    //     return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
-    // }
+    public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
+    {
+        switch ($fieldName) {
+            case 'author':
+                return true;
+        }
+        return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
+    }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
