@@ -10,9 +10,8 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
-use PoP\QueriedObject\FieldInterfaces\WithAuthorFieldInterfaceResolver;
+use PoP\Users\FieldInterfaces\WithAuthorFieldInterfaceResolver;
 use PoP\Users\Conditional\CustomPosts\Facades\CustomPostUserTypeAPIFacade;
-use PoP\ComponentModel\FieldResolvers\FieldSchemaDefinitionResolverInterface;
 
 class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 {
