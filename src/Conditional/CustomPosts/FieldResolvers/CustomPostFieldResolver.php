@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace PoP\Users\Conditional\CustomPosts\FieldResolvers;
 
-use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\ComponentModel\Facades\Instances\InstanceManagerFacade;
+use PoP\Users\FieldInterfaces\WithAuthorFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
-use PoP\Users\FieldInterfaces\WithAuthorFieldInterfaceResolver;
 use PoP\Users\Conditional\CustomPosts\Facades\CustomPostUserTypeAPIFacade;
+use PoP\ComponentModel\FieldInterfaceResolvers\FieldInterfaceResolverInterface;
 
 class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -36,12 +37,20 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         ];
     }
 
+    protected function getWithAuthorFieldInterfaceResolverInstance(): FieldInterfaceResolverInterface
+    {
+        $instanceManager = InstanceManagerFacade::getInstance();
+        return $instanceManager->getInstance(WithAuthorFieldInterfaceResolver::class);
+    }
+
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
-        $types = [
-            'author' => SchemaDefinition::TYPE_ID,
-        ];
-        return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+        switch ($fieldName) {
+            case 'author':
+                $fieldInterfaceResolver = $this->getWithAuthorFieldInterfaceResolverInstance();
+                return $fieldInterfaceResolver->getSchemaFieldType($typeResolver, $fieldName);
+        }
+        return parent::getSchemaFieldType($typeResolver, $fieldName);
     }
 
     public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
@@ -57,7 +66,8 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'author':
-                return true;
+                $fieldInterfaceResolver = $this->getWithAuthorFieldInterfaceResolverInstance();
+                return $fieldInterfaceResolver->isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
         }
         return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
     }
@@ -77,7 +87,8 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'author':
-                return UserTypeResolver::class;
+                $fieldInterfaceResolver = $this->getWithAuthorFieldInterfaceResolverInstance();
+                return $fieldInterfaceResolver->getFieldTypeResolverClass($fieldName, $fieldArgs);
         }
 
         return parent::resolveFieldTypeResolverClass($typeResolver, $fieldName, $fieldArgs);
