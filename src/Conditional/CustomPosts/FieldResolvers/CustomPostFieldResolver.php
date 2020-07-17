@@ -48,7 +48,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         switch ($fieldName) {
             case 'author':
                 $fieldInterfaceResolver = $this->getWithAuthorFieldInterfaceResolverInstance();
-                return $fieldInterfaceResolver->getSchemaFieldType($typeResolver, $fieldName);
+                return $fieldInterfaceResolver->getSchemaFieldType($fieldName);
         }
         return parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -67,7 +67,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         switch ($fieldName) {
             case 'author':
                 $fieldInterfaceResolver = $this->getWithAuthorFieldInterfaceResolverInstance();
-                return $fieldInterfaceResolver->isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
+                return $fieldInterfaceResolver->isSchemaFieldResponseNonNullable($fieldName);
         }
         return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
     }
