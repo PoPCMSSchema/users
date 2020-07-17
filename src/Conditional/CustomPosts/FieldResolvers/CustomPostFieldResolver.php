@@ -10,7 +10,9 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
+use PoP\QueriedObject\FieldInterfaces\WithAuthorFieldInterfaceResolver;
 use PoP\Users\Conditional\CustomPosts\Facades\CustomPostUserTypeAPIFacade;
+use PoP\ComponentModel\FieldResolvers\FieldSchemaDefinitionResolverInterface;
 
 class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -21,6 +23,13 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         ];
     }
 
+    public static function getImplementedInterfaceClasses(): array
+    {
+        return [
+            WithAuthorFieldInterfaceResolver::class,
+        ];
+    }
+
     public static function getFieldNamesToResolve(): array
     {
         return [
@@ -28,22 +37,41 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         ];
     }
 
-    public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    /**
+     * By returning `null`, the schema definition comes from the interface
+     *
+     * @return void
+     */
+    public function getSchemaDefinitionResolver(TypeResolverInterface $typeResolver): ?FieldSchemaDefinitionResolverInterface
     {
-        $types = [
-            'author' => SchemaDefinition::TYPE_ID,
-        ];
-        return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+        return null;
     }
 
-    public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
-    {
-        $translationAPI = TranslationAPIFacade::getInstance();
-        $descriptions = [
-            'author' => $translationAPI->__('The ID of the post\'s author', ''),
-        ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
-    }
+    // public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    // {
+    //     $types = [
+    //         'author' => SchemaDefinition::TYPE_ID,
+    //     ];
+    //     return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+    // }
+
+    // public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    // {
+    //     $translationAPI = TranslationAPIFacade::getInstance();
+    //     $descriptions = [
+    //         'author' => $translationAPI->__('The ID of the post\'s author', ''),
+    //     ];
+    //     return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
+    // }
+
+    // public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
+    // {
+    //     switch ($fieldName) {
+    //         case 'author':
+    //             return true;
+    //     }
+    //     return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
+    // }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
