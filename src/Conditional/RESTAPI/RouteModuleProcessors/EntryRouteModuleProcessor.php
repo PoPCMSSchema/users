@@ -45,7 +45,15 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $ret = array();
         $vars = ApplicationState::getVars();
         $ret[UserRouteNatures::USER][] = [
-            'module' => [\PoP_Users_Module_Processor_FieldDataloads::class, \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_SINGLEUSER, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+            'module' => [
+                \PoP_Users_Module_Processor_FieldDataloads::class,
+                \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_SINGLEUSER,
+                [
+                    'fields' => isset($vars['query']) ?
+                        $vars['query'] :
+                        self::getRESTFields()
+                ]
+            ],
             'conditions' => [
                 'scheme' => POP_SCHEME_API,
                 'datastructure' => RESTDataStructureFormatter::getName(),
@@ -59,7 +67,15 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $ret = array();
         $vars = ApplicationState::getVars();
         $routemodules = array(
-            POP_USERS_ROUTE_USERS => [\PoP_Users_Module_Processor_FieldDataloads::class, \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_USERLIST, ['fields' => isset($vars['query']) ? $vars['query'] : self::getRESTFields()]],
+            POP_USERS_ROUTE_USERS => [
+                \PoP_Users_Module_Processor_FieldDataloads::class,
+                \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_USERLIST,
+                [
+                    'fields' => isset($vars['query']) ?
+                        $vars['query'] :
+                        self::getRESTFields()
+                ]
+            ],
         );
         foreach ($routemodules as $route => $module) {
             $ret[RouteNatures::STANDARD][$route][] = [
