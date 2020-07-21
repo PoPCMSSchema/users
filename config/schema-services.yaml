@@ -6,3 +6,7 @@ services:
     PoP\Users\TypeResolvers\:
         resource: '../src/TypeResolvers/*'
         public: true
+
+    PoP\Users\FieldInterfaceResolvers\:
+        resource: '../src/FieldInterfaceResolvers/*'
+        public: true

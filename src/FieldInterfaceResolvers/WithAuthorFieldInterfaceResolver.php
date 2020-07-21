@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\FieldInterfaces;
+namespace PoP\Users\FieldInterfaceResolvers;
 
 use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
