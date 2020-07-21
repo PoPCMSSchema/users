@@ -76,7 +76,7 @@ class RootUserFieldResolver extends AbstractUserFieldResolver
                     'include' => [$fieldArgs['id']],
                 ];
                 $options = [
-                    'return-type' => POP_RETURNTYPE_IDS,
+                    'return-type' => \POP_RETURNTYPE_IDS,
                 ];
                 if ($users = $cmsusersapi->getUsers($query, $options)) {
                     return $users[0];

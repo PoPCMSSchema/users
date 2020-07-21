@@ -95,7 +95,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                     'limit' => ComponentConfiguration::getUserListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => POP_RETURNTYPE_IDS,
+                    'return-type' => \POP_RETURNTYPE_IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmsusersapi->getUsers($query, $options);
