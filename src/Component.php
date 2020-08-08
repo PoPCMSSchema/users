@@ -44,7 +44,7 @@ class Component extends AbstractComponent
     public static function getDependedMigrationPlugins(): array
     {
         return [
-            'migrate-users',
+            'pop-schema/migrate-users',
         ];
     }
 
