@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\TypeDataLoaders;
+namespace PoPSchema\Users\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
@@ -16,7 +16,7 @@ class UserTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function getObjects(array $ids): array
     {
-        $cmsusersapi = \PoP\Users\FunctionAPIFactory::getInstance();
+        $cmsusersapi = \PoPSchema\Users\FunctionAPIFactory::getInstance();
         $ret = array();
         foreach ($ids as $user_id) {
             $ret[] = $cmsusersapi->getUserById($user_id);
@@ -50,7 +50,7 @@ class UserTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQuery($query, array $options = [])
     {
-        $cmsusersapi = \PoP\Users\FunctionAPIFactory::getInstance();
+        $cmsusersapi = \PoPSchema\Users\FunctionAPIFactory::getInstance();
         return $cmsusersapi->getUsers($query, $options);
     }
 

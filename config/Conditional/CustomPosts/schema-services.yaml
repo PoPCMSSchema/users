@@ -1,4 +1,4 @@
 services:
-    PoP\Users\Conditional\CustomPosts\FieldResolvers\:
+    PoPSchema\Users\Conditional\CustomPosts\FieldResolvers\:
         resource: '../../../src/Conditional/CustomPosts/FieldResolvers/*'
         public: true

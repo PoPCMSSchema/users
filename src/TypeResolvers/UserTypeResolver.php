@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\TypeResolvers;
+namespace PoPSchema\Users\TypeResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\Users\TypeDataLoaders\UserTypeDataLoader;
+use PoPSchema\Users\TypeDataLoaders\UserTypeDataLoader;
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
 class UserTypeResolver extends AbstractTypeResolver
@@ -25,7 +25,7 @@ class UserTypeResolver extends AbstractTypeResolver
 
     public function getID($resultItem)
     {
-        $cmsusersresolver = \PoP\Users\ObjectPropertyResolverFactory::getInstance();
+        $cmsusersresolver = \PoPSchema\Users\ObjectPropertyResolverFactory::getInstance();
         $user = $resultItem;
         return $cmsusersresolver->getUserId($user);
     }

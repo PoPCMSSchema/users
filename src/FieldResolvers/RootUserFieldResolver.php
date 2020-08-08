@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\FieldResolvers;
+namespace PoPSchema\Users\FieldResolvers;
 
 use PoP\Engine\TypeResolvers\RootTypeResolver;
-use PoP\Users\FieldResolvers\AbstractUserFieldResolver;
+use PoPSchema\Users\FieldResolvers\AbstractUserFieldResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoPSchema\Users\TypeResolvers\UserTypeResolver;
 
 class RootUserFieldResolver extends AbstractUserFieldResolver
 {
@@ -69,7 +69,7 @@ class RootUserFieldResolver extends AbstractUserFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmsusersapi = \PoP\Users\FunctionAPIFactory::getInstance();
+        $cmsusersapi = \PoPSchema\Users\FunctionAPIFactory::getInstance();
         switch ($fieldName) {
             case 'user':
                 $query = [

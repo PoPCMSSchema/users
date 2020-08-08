@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users;
+namespace PoPSchema\Users;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;
-use PoP\Users\Config\ServiceConfiguration;
+use PoPSchema\Users\Config\ServiceConfiguration;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 /**
@@ -23,7 +23,7 @@ class Component extends AbstractComponent
     public static function getDependedComponentClasses(): array
     {
         return [
-            \PoP\QueriedObject\Component::class,
+            \PoPSchema\QueriedObject\Component::class,
         ];
     }
 
@@ -37,7 +37,7 @@ class Component extends AbstractComponent
         return [
             \PoP\API\Component::class,
             \PoP\RESTAPI\Component::class,
-            \PoP\CustomPosts\Component::class,
+            \PoPSchema\CustomPosts\Component::class,
         ];
     }
 
@@ -63,10 +63,10 @@ class Component extends AbstractComponent
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
 
-        if (class_exists('\PoP\CustomPosts\Component')
-            && !in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)
+        if (class_exists('\PoPSchema\CustomPosts\Component')
+            && !in_array(\PoPSchema\CustomPosts\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Users\Conditional\CustomPosts\ConditionalComponent::initialize(
+            \PoPSchema\Users\Conditional\CustomPosts\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -89,7 +89,7 @@ class Component extends AbstractComponent
 
         // Initialize all conditional components
         if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\CustomPosts\\FieldResolvers'))) {
-            \PoP\Users\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
+            \PoPSchema\Users\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "getpop/users",
+    "name": "pop-schema/users",
     "type": "library",
     "description": "Adds support for users",
     "keywords": [
@@ -19,11 +19,11 @@
     "prefer-stable": true,
     "require": {
         "php": "~7.2",
-        "getpop/queriedobject": "dev-master",
-        "getpop/migrate-users": "dev-master"
+        "pop-schema/queriedobject": "dev-master",
+        "pop-schema/migrate-users": "dev-master"
     },
     "require-dev": {
-        "getpop/customposts": "dev-master",
+        "pop-schema/customposts": "dev-master",
         "getpop/api": "dev-master",
         "getpop/api-rest": "dev-master",
         "phpstan/phpstan": "^0.12",
@@ -31,18 +31,18 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "suggest": {
-        "getpop/customposts": "Integrates well with Custom Posts",
+        "pop-schema/customposts": "Integrates well with Custom Posts",
         "getpop/api": "Integrates well with API",
         "getpop/api-rest": "Integrates well with REST API"
     },
     "autoload": {
         "psr-4": {
-            "PoP\\Users\\": "src"
+            "PoPSchema\\Users\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\Users\\": "tests"
+            "PoPSchema\\Users\\": "tests"
         }
     },
     "scripts": {

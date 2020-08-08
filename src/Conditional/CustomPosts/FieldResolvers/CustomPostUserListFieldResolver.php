@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Conditional\CustomPosts\FieldResolvers;
+namespace PoPSchema\Users\Conditional\CustomPosts\FieldResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
-use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoPSchema\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
+use PoPSchema\Users\TypeResolvers\UserTypeResolver;
 
 class CustomPostUserListFieldResolver extends AbstractCustomPostListFieldResolver
 {

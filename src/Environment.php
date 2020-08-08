@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users;
+namespace PoPSchema\Users;
 
 class Environment
 {

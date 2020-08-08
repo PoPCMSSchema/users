@@ -5,7 +5,7 @@ build:
                 before:
                     - composer require --dev getpop/api
                     - composer require --dev getpop/api-rest
-                    - composer require --dev getpop/posts
+                    - composer require --dev pop-schema/posts
             project_setup:
                 override: true
             tests:

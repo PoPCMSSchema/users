@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Config;
+namespace PoPSchema\Users\Config;
 
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 use PoP\Root\Component\PHPServiceConfigurationTrait;
@@ -17,14 +17,14 @@ class ServiceConfiguration
         if (class_exists('\PoP\API\Component') && \PoP\API\Component::isEnabled()) {
             ContainerBuilderUtils::injectServicesIntoService(
                 'route_module_processor_manager',
-                'PoP\\Users\\Conditional\\API\\RouteModuleProcessors',
+                'PoPSchema\\Users\\Conditional\\API\\RouteModuleProcessors',
                 'add'
             );
         }
         if (class_exists('\PoP\RESTAPI\Component') && \PoP\RESTAPI\Component::isEnabled()) {
             ContainerBuilderUtils::injectServicesIntoService(
                 'route_module_processor_manager',
-                'PoP\\Users\\Conditional\\RESTAPI\\RouteModuleProcessors',
+                'PoPSchema\\Users\\Conditional\\RESTAPI\\RouteModuleProcessors',
                 'add'
             );
         }

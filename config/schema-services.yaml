@@ -1,12 +1,12 @@
 services:
-    PoP\Users\FieldResolvers\:
+    PoPSchema\Users\FieldResolvers\:
         resource: '../src/FieldResolvers/*'
         public: true
 
-    PoP\Users\TypeResolvers\:
+    PoPSchema\Users\TypeResolvers\:
         resource: '../src/TypeResolvers/*'
         public: true
 
-    PoP\Users\FieldInterfaceResolvers\:
+    PoPSchema\Users\FieldInterfaceResolvers\:
         resource: '../src/FieldInterfaceResolvers/*'
         public: true

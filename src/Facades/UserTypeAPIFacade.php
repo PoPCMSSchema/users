@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\Facades;
+namespace PoPSchema\Users\Facades;
 
-use PoP\Users\TypeAPIs\UserTypeAPIInterface;
+use PoPSchema\Users\TypeAPIs\UserTypeAPIInterface;
 use PoP\Root\Container\ContainerBuilderFactory;
 
 class UserTypeAPIFacade

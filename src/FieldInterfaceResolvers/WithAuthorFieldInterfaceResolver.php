@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Users\FieldInterfaceResolvers;
+namespace PoPSchema\Users\FieldInterfaceResolvers;
 
-use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoPSchema\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\FieldInterfaceResolvers\AbstractSchemaFieldInterfaceResolver;
