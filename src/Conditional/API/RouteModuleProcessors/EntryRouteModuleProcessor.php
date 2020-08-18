@@ -7,6 +7,7 @@ namespace PoPSchema\Users\Conditional\API\RouteModuleProcessors;
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\Routing\RouteNatures;
 use PoPSchema\Users\Routing\RouteNatures as UserRouteNatures;
+use PoP\API\Response\Schemes as APISchemes;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
@@ -16,7 +17,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $ret[UserRouteNatures::USER][] = [
             'module' => [\PoP_Users_Module_Processor_FieldDataloads::class, \PoP_Users_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_SINGLEUSER],
             'conditions' => [
-                'scheme' => POP_SCHEME_API,
+                'scheme' => APISchemes::API,
             ],
         ];
         return $ret;
@@ -32,7 +33,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
             $ret[RouteNatures::STANDARD][$route][] = [
                 'module' => $module,
                 'conditions' => [
-                    'scheme' => POP_SCHEME_API,
+                    'scheme' => APISchemes::API,
                 ],
             ];
         }
