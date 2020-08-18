@@ -10,6 +10,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoPSchema\Users\TypeResolvers\UserTypeResolver;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class RootUserFieldResolver extends AbstractUserFieldResolver
 {
@@ -76,7 +77,7 @@ class RootUserFieldResolver extends AbstractUserFieldResolver
                     'include' => [$fieldArgs['id']],
                 ];
                 $options = [
-                    'return-type' => \POP_RETURNTYPE_IDS,
+                    'return-type' => ReturnTypes::IDS,
                 ];
                 if ($users = $cmsusersapi->getUsers($query, $options)) {
                     return $users[0];

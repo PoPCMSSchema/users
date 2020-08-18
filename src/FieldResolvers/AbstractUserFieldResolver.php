@@ -11,6 +11,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 use PoPSchema\Users\TypeResolvers\UserTypeResolver;
 use PoPSchema\Users\ComponentConfiguration;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -95,7 +96,7 @@ abstract class AbstractUserFieldResolver extends AbstractQueryableFieldResolver
                     'limit' => ComponentConfiguration::getUserListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => \POP_RETURNTYPE_IDS,
+                    'return-type' => ReturnTypes::IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmsusersapi->getUsers($query, $options);
