@@ -11,6 +11,10 @@ class UserTypeAPIFacade
 {
     public static function getInstance(): UserTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('user_type_api');
+        /**
+         * @var UserTypeAPIInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('user_type_api');
+        return $service;
     }
 }

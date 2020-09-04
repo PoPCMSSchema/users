@@ -11,6 +11,10 @@ class CustomPostUserTypeAPIFacade
 {
     public static function getInstance(): CustomPostUserTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('custompost_user_type_api');
+        /**
+         * @var CustomPostUserTypeAPIInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('custompost_user_type_api');
+        return $service;
     }
 }
