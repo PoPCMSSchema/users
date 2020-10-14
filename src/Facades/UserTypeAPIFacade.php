@@ -14,7 +14,7 @@ class UserTypeAPIFacade
         /**
          * @var UserTypeAPIInterface
          */
-        $service = ContainerBuilderFactory::getInstance()->get('user_type_api');
+        $service = ContainerBuilderFactory::getInstance()->get(UserTypeAPIInterface::class);
         return $service;
     }
 }
