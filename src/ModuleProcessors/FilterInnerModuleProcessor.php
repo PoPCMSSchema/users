@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace PoPSchema\Users\ModuleProcessors;
 
-use PoP\ComponentModel\ModuleProcessors\AbstractModuleProcessor;
+use PoP\ComponentModel\ModuleProcessors\AbstractFilterDataModuleProcessor;
 use PoPSchema\SchemaCommons\ModuleProcessors\FormInputs\CommonFilterInputModuleProcessor;
 use PoPSchema\Users\ModuleProcessors\FilterInputModuleProcessor;
 
-class FilterInnerModuleProcessor extends AbstractModuleProcessor
+class FilterInnerModuleProcessor extends AbstractFilterDataModuleProcessor
 {
     public const MODULE_FILTERINNER_USERS = 'filterinner-users';
     public const MODULE_FILTERINNER_USERCOUNT = 'filterinner-usercount';
@@ -48,10 +48,12 @@ class FilterInnerModuleProcessor extends AbstractModuleProcessor
             default => [],
         };
         // The "email" is a restricted arg
-        if (in_array($module[1], [
+        if (
+            in_array($module[1], [
             self::MODULE_FILTERINNER_ADMINUSERS,
             self::MODULE_FILTERINNER_ADMINUSERCOUNT,
-        ])) {
+            ])
+        ) {
             $inputmodules[] = [FilterInputModuleProcessor::class, FilterInputModuleProcessor::MODULE_FILTERINPUT_EMAILS];
         }
         if (
