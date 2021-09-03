@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Users\TypeDataLoaders;
+namespace PoPSchema\Users\RelationalTypeDataLoaders\Object;
 
-use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
+use PoP\ComponentModel\RelationalTypeDataLoaders\Object\AbstractObjectTypeQueryableDataLoader;
 use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 use PoPSchema\Users\Facades\UserTypeAPIFacade;
 use PoPSchema\SchemaCommons\Constants\QueryOptions;
 
-class UserTypeDataLoader extends AbstractTypeQueryableDataLoader
+class UserTypeDataLoader extends AbstractObjectTypeQueryableDataLoader
 {
     public function getQueryToRetrieveObjectsForIDs(array $ids): array
     {
