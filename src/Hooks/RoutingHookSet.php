@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PoPSchema\Users\Hooks;
 
 use PoP\Root\App;
-use PoP\BasicService\AbstractHookSet;
+use PoP\Root\Hooks\AbstractHookSet;
 use PoP\Routing\RouteHookNames;
 use PoPSchema\Users\Component;
 use PoPSchema\Users\ComponentConfiguration;
@@ -14,7 +14,7 @@ class RoutingHookSet extends AbstractHookSet
 {
     protected function init(): void
     {
-        $this->getHooksAPI()->addAction(
+        App::addAction(
             RouteHookNames::ROUTES,
             [$this, 'registerRoutes']
         );
