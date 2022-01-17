@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Users\TypeResolvers\InputObjectType;
+namespace PoPCMSSchema\Users\TypeResolvers\InputObjectType;
 
 use PoP\Root\App;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractOneofQueryableInputObjectTypeResolver;
 use PoP\ComponentModel\TypeResolvers\ScalarType\IDScalarTypeResolver;
 use PoP\ComponentModel\TypeResolvers\ScalarType\StringScalarTypeResolver;
-use PoPSchema\SchemaCommons\FilterInputProcessors\FilterInputProcessor as SchemaCommonsFilterInputProcessor;
+use PoPCMSSchema\SchemaCommons\FilterInputProcessors\FilterInputProcessor as SchemaCommonsFilterInputProcessor;
 use PoPSchema\SchemaCommons\TypeResolvers\ScalarType\EmailScalarTypeResolver;
-use PoPSchema\Users\Component;
-use PoPSchema\Users\ComponentConfiguration;
-use PoPSchema\Users\FilterInputProcessors\FilterInputProcessor;
+use PoPCMSSchema\Users\Component;
+use PoPCMSSchema\Users\ComponentConfiguration;
+use PoPCMSSchema\Users\FilterInputProcessors\FilterInputProcessor;
 
 class UserByInputObjectTypeResolver extends AbstractOneofQueryableInputObjectTypeResolver
 {

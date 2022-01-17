@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Users\FieldResolvers\ObjectType;
+namespace PoPCMSSchema\Users\FieldResolvers\ObjectType;
 
 use PoP\ComponentModel\FieldResolvers\ObjectType\AbstractQueryableObjectTypeFieldResolver;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
@@ -10,13 +10,13 @@ use PoP\ComponentModel\TypeResolvers\ConcreteTypeResolverInterface;
 use PoP\ComponentModel\TypeResolvers\ObjectType\ObjectTypeResolverInterface;
 use PoP\ComponentModel\TypeResolvers\ScalarType\IntScalarTypeResolver;
 use PoPSchema\SchemaCommons\Constants\QueryOptions;
-use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
-use PoPSchema\SchemaCommons\Resolvers\WithLimitFieldArgResolverTrait;
-use PoPSchema\Users\TypeAPIs\UserTypeAPIInterface;
-use PoPSchema\Users\TypeResolvers\InputObjectType\UserPaginationInputObjectTypeResolver;
-use PoPSchema\Users\TypeResolvers\InputObjectType\UsersFilterInputObjectTypeResolver;
-use PoPSchema\Users\TypeResolvers\InputObjectType\UserSortInputObjectTypeResolver;
-use PoPSchema\Users\TypeResolvers\ObjectType\UserObjectTypeResolver;
+use PoPCMSSchema\SchemaCommons\DataLoading\ReturnTypes;
+use PoPCMSSchema\SchemaCommons\Resolvers\WithLimitFieldArgResolverTrait;
+use PoPCMSSchema\Users\TypeAPIs\UserTypeAPIInterface;
+use PoPCMSSchema\Users\TypeResolvers\InputObjectType\UserPaginationInputObjectTypeResolver;
+use PoPCMSSchema\Users\TypeResolvers\InputObjectType\UsersFilterInputObjectTypeResolver;
+use PoPCMSSchema\Users\TypeResolvers\InputObjectType\UserSortInputObjectTypeResolver;
+use PoPCMSSchema\Users\TypeResolvers\ObjectType\UserObjectTypeResolver;
 
 abstract class AbstractUserObjectTypeFieldResolver extends AbstractQueryableObjectTypeFieldResolver
 {
