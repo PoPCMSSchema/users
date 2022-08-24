@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Users\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoPCMSSchema\SchemaCommons\TypeResolvers\InputObjectType\AbstractObjectsFilterInputObjectTypeResolver;
 
 abstract class AbstractUsersFilterInputObjectTypeResolver extends AbstractObjectsFilterInputObjectTypeResolver
@@ -16,6 +17,7 @@ abstract class AbstractUsersFilterInputObjectTypeResolver extends AbstractObject
     }
     final protected function getUserSearchByInputObjectTypeResolver(): UserSearchByInputObjectTypeResolver
     {
+        /** @var UserSearchByInputObjectTypeResolver */
         return $this->userSearchByInputObjectTypeResolver ??= $this->instanceManager->getInstance(UserSearchByInputObjectTypeResolver::class);
     }
 
@@ -24,6 +26,9 @@ abstract class AbstractUsersFilterInputObjectTypeResolver extends AbstractObject
         return $this->__('Input to filter users', 'users');
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return array_merge(

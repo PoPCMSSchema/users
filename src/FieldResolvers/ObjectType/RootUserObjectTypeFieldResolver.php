@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Users\FieldResolvers\ObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\QueryResolution\FieldDataAccessorInterface;
 use PoP\ComponentModel\Feedback\ObjectTypeFieldResolutionFeedbackStore;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
@@ -26,6 +27,7 @@ class RootUserObjectTypeFieldResolver extends AbstractUserObjectTypeFieldResolve
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setUserByInputObjectTypeResolver(UserByInputObjectTypeResolver $userByInputObjectTypeResolver): void
@@ -34,9 +36,13 @@ class RootUserObjectTypeFieldResolver extends AbstractUserObjectTypeFieldResolve
     }
     final protected function getUserByInputObjectTypeResolver(): UserByInputObjectTypeResolver
     {
+        /** @var UserByInputObjectTypeResolver */
         return $this->userByInputObjectTypeResolver ??= $this->instanceManager->getInstance(UserByInputObjectTypeResolver::class);
     }
 
+    /**
+     * @return array<class-string<ObjectTypeResolverInterface>>
+     */
     public function getObjectTypeResolverClassesToAttachTo(): array
     {
         return [
@@ -44,6 +50,9 @@ class RootUserObjectTypeFieldResolver extends AbstractUserObjectTypeFieldResolve
         ];
     }
 
+    /**
+     * @return string[]
+     */
     public function getFieldNamesToResolve(): array
     {
         return array_merge(
@@ -63,6 +72,9 @@ class RootUserObjectTypeFieldResolver extends AbstractUserObjectTypeFieldResolve
         };
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getFieldArgNameTypeResolvers(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): array
     {
         $fieldArgNameTypeResolvers = parent::getFieldArgNameTypeResolvers($objectTypeResolver, $fieldName);

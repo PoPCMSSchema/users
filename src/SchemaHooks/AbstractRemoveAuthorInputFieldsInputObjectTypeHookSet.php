@@ -25,6 +25,7 @@ abstract class AbstractRemoveAuthorInputFieldsInputObjectTypeHookSet extends Abs
     }
     final protected function getIDScalarTypeResolver(): IDScalarTypeResolver
     {
+        /** @var IDScalarTypeResolver */
         return $this->idScalarTypeResolver ??= $this->instanceManager->getInstance(IDScalarTypeResolver::class);
     }
     final public function setStringScalarTypeResolver(StringScalarTypeResolver $stringScalarTypeResolver): void
@@ -33,6 +34,7 @@ abstract class AbstractRemoveAuthorInputFieldsInputObjectTypeHookSet extends Abs
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
 
@@ -56,7 +58,8 @@ abstract class AbstractRemoveAuthorInputFieldsInputObjectTypeHookSet extends Abs
     /**
      * Remove the fields added by the SchemaHookSet
      *
-     * @param array<string, InputTypeResolverInterface> $inputFieldNameTypeResolvers
+     * @param array<string,InputTypeResolverInterface> $inputFieldNameTypeResolvers
+     * @return array<string,InputTypeResolverInterface>
      */
     public function getInputFieldNameTypeResolvers(
         array $inputFieldNameTypeResolvers,

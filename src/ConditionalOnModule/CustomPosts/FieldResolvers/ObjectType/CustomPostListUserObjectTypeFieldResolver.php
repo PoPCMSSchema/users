@@ -21,9 +21,13 @@ class CustomPostListUserObjectTypeFieldResolver extends AbstractCustomPostListOb
     }
     final protected function getUserCustomPostsFilterInputObjectTypeResolver(): UserCustomPostsFilterInputObjectTypeResolver
     {
+        /** @var UserCustomPostsFilterInputObjectTypeResolver */
         return $this->userCustomPostsFilterInputObjectTypeResolver ??= $this->instanceManager->getInstance(UserCustomPostsFilterInputObjectTypeResolver::class);
     }
 
+    /**
+     * @return array<class-string<ObjectTypeResolverInterface>>
+     */
     public function getObjectTypeResolverClassesToAttachTo(): array
     {
         return [
@@ -46,7 +50,7 @@ class CustomPostListUserObjectTypeFieldResolver extends AbstractCustomPostListOb
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<string,mixed>
      */
     protected function getQuery(
         ObjectTypeResolverInterface $objectTypeResolver,

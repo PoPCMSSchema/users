@@ -33,6 +33,7 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     }
     final protected function getIDScalarTypeResolver(): IDScalarTypeResolver
     {
+        /** @var IDScalarTypeResolver */
         return $this->idScalarTypeResolver ??= $this->instanceManager->getInstance(IDScalarTypeResolver::class);
     }
     final public function setStringScalarTypeResolver(StringScalarTypeResolver $stringScalarTypeResolver): void
@@ -41,6 +42,7 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setAuthorIDsFilterInput(AuthorIDsFilterInput $authorIDsFilterInput): void
@@ -49,6 +51,7 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     }
     final protected function getAuthorIDsFilterInput(): AuthorIDsFilterInput
     {
+        /** @var AuthorIDsFilterInput */
         return $this->authorIDsFilterInput ??= $this->instanceManager->getInstance(AuthorIDsFilterInput::class);
     }
     final public function setAuthorSlugFilterInput(AuthorSlugFilterInput $authorSlugFilterInput): void
@@ -57,6 +60,7 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     }
     final protected function getAuthorSlugFilterInput(): AuthorSlugFilterInput
     {
+        /** @var AuthorSlugFilterInput */
         return $this->authorSlugFilterInput ??= $this->instanceManager->getInstance(AuthorSlugFilterInput::class);
     }
     final public function setExcludeAuthorIDsFilterInput(ExcludeAuthorIDsFilterInput $excludeAuthorIDsFilterInput): void
@@ -65,6 +69,7 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     }
     final protected function getExcludeAuthorIDsFilterInput(): ExcludeAuthorIDsFilterInput
     {
+        /** @var ExcludeAuthorIDsFilterInput */
         return $this->excludeAuthorIDsFilterInput ??= $this->instanceManager->getInstance(ExcludeAuthorIDsFilterInput::class);
     }
 
@@ -104,7 +109,8 @@ abstract class AbstractAddAuthorInputFieldsInputObjectTypeHookSet extends Abstra
     ): bool;
 
     /**
-     * @param array<string, InputTypeResolverInterface> $inputFieldNameTypeResolvers
+     * @param array<string,InputTypeResolverInterface> $inputFieldNameTypeResolvers
+     * @return array<string,InputTypeResolverInterface>|mixed[]
      */
     public function getInputFieldNameTypeResolvers(
         array $inputFieldNameTypeResolvers,
